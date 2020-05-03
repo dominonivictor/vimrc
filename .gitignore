@@ -1,2 +1,6 @@
 .netrwhist  
 .viminfo
+/pack/*
+/plugins/*
+/pack/
+/plugins/

@@ -6,7 +6,6 @@ set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
 set visualbell	" Use visual bell (no beeping)
- 
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
@@ -20,6 +19,7 @@ set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
  
 "" Advanced
+set directory^=$HOME/.vim/tmp//
 set ruler	" Show row and column ruler information
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -50,21 +50,26 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 15
 let g:netrw_liststyle=3
 let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s)\zs\.\S\+'
+let g:netrw_list_hide.=',\(^\|\s\s)\zs\.\S\+,*\.pyc,*\.exe'
 
 augroup ProjectDrawer
   autocmd!
   autocmd VimEnter * :Vexplore
 augroup END
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
 nnoremap ; :
 nnoremap : ;
 
+set iskeyword-=_
+let mapleader = ","
+nmap <Leader>d <Plug>(Scalpel)
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+let @p="iimport pdb; pdb.set_trace()\<ESC>"
+let @k=":%s/import pdb; pdb.set_trace()//g"

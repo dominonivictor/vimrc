@@ -60,7 +60,6 @@ augroup END
 nnoremap ; :
 nnoremap : ;
 
-set iskeyword-=_
 let mapleader = ","
 nmap <Leader>d <Plug>(Scalpel)
 
@@ -71,5 +70,12 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+
 let @p="iimport pdb; pdb.set_trace()\<ESC>"
 let @k=":%s/import pdb; pdb.set_trace()//g"
+set clipboard=unnamedplus
+

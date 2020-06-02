@@ -25,14 +25,14 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 set laststatus=2
 set statusline+=%F
- 
+
+"customs
 set viminfo+=n~/.vim/.viminfo "lets viminfo be inside .vim folder
 
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
+set clipboard=unnamedplus
  
-nnoremap <space> :noh<CR>
-
 filetype plugin on
 syntax enable
 set nocompatible 
@@ -42,7 +42,7 @@ set path+=**
 
 set wildmenu
 
-
+"NETRW CONFIGS
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -52,17 +52,7 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s)\zs\.\S\+,*\.pyc,*\.exe'
 
-nnoremap ; :
-nnoremap : ;
-
-let mapleader = ","
-nmap <Leader>d <Plug>(Scalpel)
-nmap <Leader>g <Plug>(VcsJump)
-
-let @p="iimport pdb; pdb.set_trace()\<ESC>"
-let @k=":%s/import pdb; pdb.set_trace()//g"
-set clipboard=unnamedplus
-
+"PLUG CONFIGS
 call plug#begin()
 "Plugin below needs a Ruby interpreter!!!
 Plug 'wincent/vcs-jump' 
@@ -88,7 +78,16 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\S\zs\s\+$/
 set encoding=utf-8
 let python_highlight_all=1
 
+"CUSTOM CONFIGS
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 nmap <C-k> <C-w>k
 nmap <C-j> <C-w>j
+nnoremap <space> :noh<CR>
+nnoremap ; :
+nnoremap : ;
+let @p="iimport pdb; pdb.set_trace()\<ESC>"
+let @k=":%s/import pdb; pdb.set_trace()//g"
+let mapleader = ","
+nmap <Leader>d <Plug>(Scalpel)
+nmap <Leader>g <Plug>(VcsJump)
